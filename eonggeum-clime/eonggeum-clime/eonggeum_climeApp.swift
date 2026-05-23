@@ -11,7 +11,7 @@ import SwiftUI
 struct eonggeum_climeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
