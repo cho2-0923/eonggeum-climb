@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		894AFDA12FC2243D00E5F302 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 894AFD8B2FC2243C00E5F302 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 894AFD922FC2243C00E5F302;
+			remoteInfo = "eonggeum-clime";
+		};
+		894AFDAB2FC2243D00E5F302 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 894AFD8B2FC2243C00E5F302 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 894AFD922FC2243C00E5F302;
+			remoteInfo = "eonggeum-clime";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		894AFD932FC2243C00E5F302 /* eonggeum-clime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eonggeum-clime.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		894AFDA02FC2243D00E5F302 /* eonggeum-climeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eonggeum-climeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		894AFDAA2FC2243D00E5F302 /* eonggeum-climeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eonggeum-climeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		894AFD952FC2243C00E5F302 /* eonggeum-clime */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "eonggeum-clime";
+			sourceTree = "<group>";
+		};
+		894AFDA32FC2243D00E5F302 /* eonggeum-climeTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "eonggeum-climeTests";
+			sourceTree = "<group>";
+		};
+		894AFDAD2FC2243D00E5F302 /* eonggeum-climeUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "eonggeum-climeUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		894AFD902FC2243C00E5F302 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894AFD9D2FC2243D00E5F302 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894AFDA72FC2243D00E5F302 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		894AFD8A2FC2243C00E5F302 = {
+			isa = PBXGroup;
+			children = (
+				894AFD952FC2243C00E5F302 /* eonggeum-clime */,
+				894AFDA32FC2243D00E5F302 /* eonggeum-climeTests */,
+				894AFDAD2FC2243D00E5F302 /* eonggeum-climeUITests */,
+				894AFD942FC2243C00E5F302 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		894AFD942FC2243C00E5F302 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				894AFD932FC2243C00E5F302 /* eonggeum-clime.app */,
+				894AFDA02FC2243D00E5F302 /* eonggeum-climeTests.xctest */,
+				894AFDAA2FC2243D00E5F302 /* eonggeum-climeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		894AFD922FC2243C00E5F302 /* eonggeum-clime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 894AFDB42FC2243D00E5F302 /* Build configuration list for PBXNativeTarget "eonggeum-clime" */;
+			buildPhases = (
+				894AFD8F2FC2243C00E5F302 /* Sources */,
+				894AFD902FC2243C00E5F302 /* Frameworks */,
+				894AFD912FC2243C00E5F302 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				894AFD952FC2243C00E5F302 /* eonggeum-clime */,
+			);
+			name = "eonggeum-clime";
+			packageProductDependencies = (
+			);
+			productName = "eonggeum-clime";
+			productReference = 894AFD932FC2243C00E5F302 /* eonggeum-clime.app */;
+			productType = "com.apple.product-type.application";
+		};
+		894AFD9F2FC2243D00E5F302 /* eonggeum-climeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 894AFDB72FC2243D00E5F302 /* Build configuration list for PBXNativeTarget "eonggeum-climeTests" */;
+			buildPhases = (
+				894AFD9C2FC2243D00E5F302 /* Sources */,
+				894AFD9D2FC2243D00E5F302 /* Frameworks */,
+				894AFD9E2FC2243D00E5F302 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				894AFDA22FC2243D00E5F302 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				894AFDA32FC2243D00E5F302 /* eonggeum-climeTests */,
+			);
+			name = "eonggeum-climeTests";
+			packageProductDependencies = (
+			);
+			productName = "eonggeum-climeTests";
+			productReference = 894AFDA02FC2243D00E5F302 /* eonggeum-climeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		894AFDA92FC2243D00E5F302 /* eonggeum-climeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 894AFDBA2FC2243D00E5F302 /* Build configuration list for PBXNativeTarget "eonggeum-climeUITests" */;
+			buildPhases = (
+				894AFDA62FC2243D00E5F302 /* Sources */,
+				894AFDA72FC2243D00E5F302 /* Frameworks */,
+				894AFDA82FC2243D00E5F302 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				894AFDAC2FC2243D00E5F302 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				894AFDAD2FC2243D00E5F302 /* eonggeum-climeUITests */,
+			);
+			name = "eonggeum-climeUITests";
+			packageProductDependencies = (
+			);
+			productName = "eonggeum-climeUITests";
+			productReference = 894AFDAA2FC2243D00E5F302 /* eonggeum-climeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		894AFD8B2FC2243C00E5F302 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					894AFD922FC2243C00E5F302 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					894AFD9F2FC2243D00E5F302 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 894AFD922FC2243C00E5F302;
+					};
+					894AFDA92FC2243D00E5F302 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 894AFD922FC2243C00E5F302;
+					};
+				};
+			};
+			buildConfigurationList = 894AFD8E2FC2243C00E5F302 /* Build configuration list for PBXProject "eonggeum-clime" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 894AFD8A2FC2243C00E5F302;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 894AFD942FC2243C00E5F302 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				894AFD922FC2243C00E5F302 /* eonggeum-clime */,
+				894AFD9F2FC2243D00E5F302 /* eonggeum-climeTests */,
+				894AFDA92FC2243D00E5F302 /* eonggeum-climeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		894AFD912FC2243C00E5F302 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894AFD9E2FC2243D00E5F302 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894AFDA82FC2243D00E5F302 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		894AFD8F2FC2243C00E5F302 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894AFD9C2FC2243D00E5F302 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894AFDA62FC2243D00E5F302 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		894AFDA22FC2243D00E5F302 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 894AFD922FC2243C00E5F302 /* eonggeum-clime */;
+			targetProxy = 894AFDA12FC2243D00E5F302 /* PBXContainerItemProxy */;
+		};
+		894AFDAC2FC2243D00E5F302 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 894AFD922FC2243C00E5F302 /* eonggeum-clime */;
+			targetProxy = 894AFDAB2FC2243D00E5F302 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		894AFDB22FC2243D00E5F302 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 43LM67V46K;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		894AFDB32FC2243D00E5F302 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 43LM67V46K;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		894AFDB52FC2243D00E5F302 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 43LM67V46K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.eonggeum-clime";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		894AFDB62FC2243D00E5F302 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 43LM67V46K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.eonggeum-clime";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		894AFDB82FC2243D00E5F302 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 43LM67V46K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.eonggeum-climeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eonggeum-clime.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/eonggeum-clime";
+			};
+			name = Debug;
+		};
+		894AFDB92FC2243D00E5F302 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 43LM67V46K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.eonggeum-climeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eonggeum-clime.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/eonggeum-clime";
+			};
+			name = Release;
+		};
+		894AFDBB2FC2243D00E5F302 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 43LM67V46K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.eonggeum-climeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "eonggeum-clime";
+			};
+			name = Debug;
+		};
+		894AFDBC2FC2243D00E5F302 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 43LM67V46K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.eonggeum-climeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "eonggeum-clime";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		894AFD8E2FC2243C00E5F302 /* Build configuration list for PBXProject "eonggeum-clime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				894AFDB22FC2243D00E5F302 /* Debug */,
+				894AFDB32FC2243D00E5F302 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		894AFDB42FC2243D00E5F302 /* Build configuration list for PBXNativeTarget "eonggeum-clime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				894AFDB52FC2243D00E5F302 /* Debug */,
+				894AFDB62FC2243D00E5F302 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		894AFDB72FC2243D00E5F302 /* Build configuration list for PBXNativeTarget "eonggeum-climeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				894AFDB82FC2243D00E5F302 /* Debug */,
+				894AFDB92FC2243D00E5F302 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		894AFDBA2FC2243D00E5F302 /* Build configuration list for PBXNativeTarget "eonggeum-climeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				894AFDBB2FC2243D00E5F302 /* Debug */,
+				894AFDBC2FC2243D00E5F302 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 894AFD8B2FC2243C00E5F302 /* Project object */;
+}
