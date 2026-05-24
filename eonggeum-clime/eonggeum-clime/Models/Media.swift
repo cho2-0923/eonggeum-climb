@@ -1,12 +1,25 @@
 import Foundation
+import SwiftData
 
-struct Media: Identifiable, Hashable, Codable {
-    let id: UUID
+@Model
+final class Media {
+    var id: UUID
     var url: URL
     var type: MediaType
+    var problemRecord: ProblemRecord?
+
+    init(
+        id: UUID = UUID(),
+        url: URL,
+        type: MediaType
+    ) {
+        self.id = id
+        self.url = url
+        self.type = type
+    }
 }
 
-enum MediaType: String, Hashable, Codable {
+enum MediaType: String, Codable {
     case photo
     case video
 }

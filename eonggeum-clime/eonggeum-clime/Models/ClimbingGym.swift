@@ -1,7 +1,19 @@
 import Foundation
+import SwiftData
 
-struct ClimbingGym: Identifiable, Hashable, Codable {
-    let id: UUID
+@Model
+final class ClimbingGym {
+    var id: UUID
     var name: String
     var address: String?
+
+    init(
+        id: UUID = UUID(),
+        name: String,
+        address: String? = nil
+    ) {
+        self.id = id
+        self.name = name
+        self.address = address
+    }
 }

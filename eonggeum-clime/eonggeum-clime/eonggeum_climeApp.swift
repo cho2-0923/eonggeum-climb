@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct eonggeum_climeApp: App {
@@ -13,5 +14,11 @@ struct eonggeum_climeApp: App {
         WindowGroup {
             HomeView()
         }
+        .modelContainer(for: [
+            DailyRecord.self,
+            ClimbingGym.self,
+            ProblemRecord.self,
+            Media.self
+        ])
     }
 }
