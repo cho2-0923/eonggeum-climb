@@ -1,31 +1,143 @@
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @Environment(\.modelContext) private var modelContext
+    @State private var viewModel = HomeViewModel()
     @State private var isShowingCreateRecord = false
+    @State private var isShowingAddProblem = false
 
     var body: some View {
         NavigationStack {
-            Text("홈")
-                .navigationTitle("엉금엉금")
-                .toolbar {
-                    ToolbarItem(placement: .primaryAction) {
-                        Button {
-                            isShowingCreateRecord = true
-                        } label: {
-                            Image(systemName: "plus")
-                                .foregroundStyle(Color.App.primary)
-                        }
+            ScrollView {
+                VStack(alignment: .leading, spacing: AppSpacing.lg) {
+                    dateNavigatorView
+
+                    if let record = viewModel.dailyRecord {
+                        recordContentView(record: record)
+                    } else {
+                        emptyStateView
                     }
                 }
-                .sheet(isPresented: $isShowingCreateRecord) {
-                    CreateRecordView()
-                }
+                .padding(AppSpacing.md)
+            }
+            .navigationTitle("엉금엉금")
+            .navigationBarTitleDisplayMode(.large)
         }
+        .onAppear {
+            viewModel.fetchRecord(context: modelContext)
+        }
+        .onChange(of: viewModel.selectedDate) {
+            viewModel.fetchRecord(context: modelContext)
+        }
+        .onChange(of: isShowingCreateRecord) {
+            if !isShowingCreateRecord {
+                viewModel.fetchRecord(context: modelContext)
+            }
+        }
+        .sheet(isPresented: $isShowingCreateRecord) {
+            CreateRecordView()
+        }
+        .sheet(isPresented: $isShowingAddProblem) {
+            if let record = viewModel.dailyRecord {
+                AddProblemRecordView(dailyRecord: record)
+            }
+        }
+    }
+
+    private var dateNavigatorView: some View {
+        HStack {
+            Button(action: viewModel.goToPreviousDay) {
+                Image(systemName: "chevron.left")
+                    .foregroundStyle(Color.App.primary)
+                    .padding(AppSpacing.sm)
+            }
+
+            Spacer()
+
+            Text(viewModel.selectedDate.formatted(.dateTime.year().month(.wide).day()))
+                .font(.App.subtitle)
+                .foregroundStyle(Color.App.textPrimary)
+
+            Spacer()
+
+            Button(action: viewModel.goToNextDay) {
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(viewModel.isNextDayAllowed ? Color.App.primary : Color.App.textSecondary)
+                    .padding(AppSpacing.sm)
+            }
+            .disabled(!viewModel.isNextDayAllowed)
+        }
+        .padding(.vertical, AppSpacing.xs)
+        .background(Color.App.surface)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+
+    private func recordContentView(record: DailyRecord) -> some View {
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            if let gym = record.gym {
+                Label(gym.name, systemImage: "mappin.circle.fill")
+                    .font(.App.body)
+                    .foregroundStyle(Color.App.textSecondary)
+            }
+
+            HStack {
+                Text("문제 기록")
+                    .font(.App.subtitle)
+                    .foregroundStyle(Color.App.textPrimary)
+                Spacer()
+                Button {
+                    isShowingAddProblem = true
+                } label: {
+                    Label("문제 추가", systemImage: "plus.circle.fill")
+                        .font(.App.caption)
+                        .foregroundStyle(Color.App.primary)
+                }
+            }
+
+            if record.problems.isEmpty {
+                Text("아직 추가된 문제 기록이 없어요.")
+                    .font(.App.body)
+                    .foregroundStyle(Color.App.textSecondary)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.vertical, AppSpacing.xl)
+            } else {
+                ForEach(record.problems) { problem in
+                    ProblemRecordCard(problem: problem)
+                }
+            }
+        }
+    }
+
+    private var emptyStateView: some View {
+        VStack(spacing: AppSpacing.md) {
+            Image(systemName: "figure.climbing")
+                .font(.system(size: 52))
+                .foregroundStyle(Color.App.primary.opacity(0.5))
+                .padding(.top, AppSpacing.lg)
+
+            Text("이 날의 기록이 없어요")
+                .font(.App.subtitle)
+                .foregroundStyle(Color.App.textPrimary)
+
+            Text("클라이밍 세션을 시작해볼까요?")
+                .font(.App.body)
+                .foregroundStyle(Color.App.textSecondary)
+
+            PrimaryButton(title: "기록 추가", action: {
+                isShowingCreateRecord = true
+            }, isFullWidth: true)
+            .padding(.top, AppSpacing.xs)
+            .padding(.bottom, AppSpacing.lg)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, AppSpacing.xl)
+        .background(Color.App.surface)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 
 #Preview {
     HomeView()
-        .modelContainer(for: [DailyRecord.self, ClimbingGym.self], inMemory: true)
+        .modelContainer(for: [DailyRecord.self, ClimbingGym.self, ProblemRecord.self, Media.self], inMemory: true)
 }
