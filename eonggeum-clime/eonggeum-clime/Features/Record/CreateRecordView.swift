@@ -48,13 +48,24 @@ struct CreateRecordView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("저장") {
-                        viewModel.save(context: modelContext)
-                        dismiss()
+                        if viewModel.save(context: modelContext) != nil {
+                            dismiss()
+                        }
                     }
                     .font(.App.button)
                     .foregroundStyle(viewModel.canSave ? Color.App.primary : Color.App.textSecondary)
                     .disabled(!viewModel.canSave)
                 }
+            }
+            .alert("이미 기록이 있어요", isPresented: $viewModel.isDuplicateDateAlertShowing) {
+                Button("확인", role: .cancel) {}
+            } message: {
+                Text("선택한 날짜에 이미 기록이 있어요. 다른 날짜를 선택해주세요.")
+            }
+            .alert("저장 실패", isPresented: $viewModel.isSaveFailedAlertShowing) {
+                Button("확인", role: .cancel) {}
+            } message: {
+                Text("기록을 저장하는 데 실패했어요. 다시 시도해주세요.")
             }
         }
     }
