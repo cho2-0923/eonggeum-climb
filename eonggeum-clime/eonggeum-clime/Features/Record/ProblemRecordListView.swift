@@ -3,6 +3,7 @@ import SwiftUI
 struct ProblemRecordListView: View {
     let problems: [ProblemRecord]
     let onAddProblem: () -> Void
+    let onEdit: (ProblemRecord) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
@@ -32,6 +33,11 @@ struct ProblemRecordListView: View {
             } else {
                 ForEach(problems) { problem in
                     ProblemRecordCard(problem: problem)
+                        .contextMenu {
+                            Button { onEdit(problem) } label: {
+                                Label("수정", systemImage: "pencil")
+                            }
+                        }
                 }
             }
         }

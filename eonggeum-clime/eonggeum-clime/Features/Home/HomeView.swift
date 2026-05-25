@@ -6,6 +6,8 @@ struct HomeView: View {
     @State private var viewModel = HomeViewModel()
     @State private var isShowingCreateRecord = false
     @State private var isShowingAddProblem = false
+    @State private var isShowingEditDailyRecord = false
+    @State private var selectedProblemForEdit: ProblemRecord? = nil
 
     var body: some View {
         NavigationStack {
@@ -23,6 +25,18 @@ struct HomeView: View {
             }
             .navigationTitle("엉금엉금")
             .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                if viewModel.dailyRecord != nil {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            isShowingEditDailyRecord = true
+                        } label: {
+                            Image(systemName: "pencil")
+                                .foregroundStyle(Color.App.primary)
+                        }
+                    }
+                }
+            }
         }
         .onAppear {
             viewModel.fetchRecord(context: modelContext)
@@ -42,6 +56,14 @@ struct HomeView: View {
             if let record = viewModel.dailyRecord {
                 AddProblemRecordView(dailyRecord: record)
             }
+        }
+        .sheet(isPresented: $isShowingEditDailyRecord) {
+            if let record = viewModel.dailyRecord {
+                EditDailyRecordView(record: record)
+            }
+        }
+        .sheet(item: $selectedProblemForEdit) { problem in
+            EditProblemRecordView(problem: problem)
         }
     }
 
@@ -81,9 +103,11 @@ struct HomeView: View {
                     .foregroundStyle(Color.App.textSecondary)
             }
 
-            ProblemRecordListView(problems: record.problems) {
-                isShowingAddProblem = true
-            }
+            ProblemRecordListView(
+                problems: record.problems,
+                onAddProblem: { isShowingAddProblem = true },
+                onEdit: { selectedProblemForEdit = $0 }
+            )
         }
     }
 
