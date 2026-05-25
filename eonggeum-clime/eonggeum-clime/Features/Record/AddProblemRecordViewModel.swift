@@ -7,11 +7,13 @@ final class AddProblemRecordViewModel {
     var isCompleted: Bool = false
     var attempts: Int = 1
     var notes: String = ""
+    var isSaveFailedAlertShowing = false
 
     var canSave: Bool {
         !grade.trimmingCharacters(in: .whitespaces).isEmpty
     }
 
+    @discardableResult
     func save(context: ModelContext, into dailyRecord: DailyRecord) -> ProblemRecord? {
         guard canSave else { return nil }
         let record = ProblemRecord(
@@ -20,8 +22,14 @@ final class AddProblemRecordViewModel {
             attempts: attempts,
             notes: notes.isEmpty ? nil : notes
         )
-        context.insert(record)
-        dailyRecord.problems.append(record)
-        return record
+        do {
+            context.insert(record)
+            dailyRecord.problems.append(record)
+            try context.save()
+            return record
+        } catch {
+            isSaveFailedAlertShowing = true
+            return nil
+        }
     }
 }
