@@ -8,6 +8,7 @@ struct HomeView: View {
     @State private var isShowingAddProblem = false
     @State private var isShowingEditDailyRecord = false
     @State private var selectedProblemForEdit: ProblemRecord? = nil
+    @State private var problemToDelete: ProblemRecord? = nil
 
     var body: some View {
         NavigationStack {
@@ -65,6 +66,28 @@ struct HomeView: View {
         .sheet(item: $selectedProblemForEdit) { problem in
             EditProblemRecordView(problem: problem)
         }
+        .alert("문제 삭제", isPresented: Binding(
+            get: { problemToDelete != nil },
+            set: { if !$0 { problemToDelete = nil } }
+        )) {
+            Button("삭제", role: .destructive) {
+                if let problem = problemToDelete {
+                    deleteProblem(problem)
+                }
+                problemToDelete = nil
+            }
+            Button("취소", role: .cancel) {
+                problemToDelete = nil
+            }
+        } message: {
+            Text("이 문제 기록을 삭제하면 되돌릴 수 없어요.")
+        }
+    }
+
+    private func deleteProblem(_ problem: ProblemRecord) {
+        viewModel.dailyRecord?.problems.removeAll { $0.id == problem.id }
+        modelContext.delete(problem)
+        try? modelContext.save()
     }
 
     private var dateNavigatorView: some View {
@@ -106,7 +129,8 @@ struct HomeView: View {
             ProblemRecordListView(
                 problems: record.problems,
                 onAddProblem: { isShowingAddProblem = true },
-                onEdit: { selectedProblemForEdit = $0 }
+                onEdit: { selectedProblemForEdit = $0 },
+                onDelete: { problemToDelete = $0 }
             )
         }
     }
