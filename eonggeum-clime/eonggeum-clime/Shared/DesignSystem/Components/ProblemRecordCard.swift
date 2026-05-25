@@ -9,7 +9,7 @@ struct ProblemRecordCard: View {
                 .font(.App.subtitle)
                 .foregroundStyle(.white)
                 .frame(width: 48, height: 48)
-                .background(Color.App.primary)
+                .background(Color.App.grade(problem.grade))
                 .clipShape(Circle())
 
             VStack(alignment: .leading, spacing: AppSpacing.xs) {
@@ -19,6 +19,12 @@ struct ProblemRecordCard: View {
                 Text("시도 \(problem.attempts)회")
                     .font(.App.caption)
                     .foregroundStyle(Color.App.textSecondary)
+                if let notes = problem.notes, !notes.isEmpty {
+                    Text(notes)
+                        .font(.App.caption)
+                        .foregroundStyle(Color.App.textSecondary)
+                        .lineLimit(1)
+                }
             }
 
             Spacer()
@@ -35,8 +41,9 @@ struct ProblemRecordCard: View {
 
 #Preview {
     VStack(spacing: AppSpacing.sm) {
-        ProblemRecordCard(problem: ProblemRecord(grade: "V3", isCompleted: true, attempts: 3))
-        ProblemRecordCard(problem: ProblemRecord(grade: "V5", isCompleted: false, attempts: 7))
+        ProblemRecordCard(problem: ProblemRecord(grade: "V3", isCompleted: true, attempts: 3, notes: "발 홀드 집중"))
+        ProblemRecordCard(problem: ProblemRecord(grade: "빨강", isCompleted: false, attempts: 7))
+        ProblemRecordCard(problem: ProblemRecord(grade: "초급", isCompleted: true, attempts: 1))
     }
     .padding()
 }
