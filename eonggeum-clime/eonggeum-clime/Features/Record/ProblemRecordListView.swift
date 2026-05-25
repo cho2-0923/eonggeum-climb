@@ -4,6 +4,7 @@ struct ProblemRecordListView: View {
     let problems: [ProblemRecord]
     let onAddProblem: () -> Void
     let onEdit: (ProblemRecord) -> Void
+    let onDelete: (ProblemRecord) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
@@ -36,6 +37,9 @@ struct ProblemRecordListView: View {
                         .contextMenu {
                             Button { onEdit(problem) } label: {
                                 Label("수정", systemImage: "pencil")
+                            }
+                            Button(role: .destructive) { onDelete(problem) } label: {
+                                Label("삭제", systemImage: "trash")
                             }
                         }
                 }
