@@ -81,30 +81,8 @@ struct HomeView: View {
                     .foregroundStyle(Color.App.textSecondary)
             }
 
-            HStack {
-                Text("문제 기록")
-                    .font(.App.subtitle)
-                    .foregroundStyle(Color.App.textPrimary)
-                Spacer()
-                Button {
-                    isShowingAddProblem = true
-                } label: {
-                    Label("문제 추가", systemImage: "plus.circle.fill")
-                        .font(.App.caption)
-                        .foregroundStyle(Color.App.primary)
-                }
-            }
-
-            if record.problems.isEmpty {
-                Text("아직 추가된 문제 기록이 없어요.")
-                    .font(.App.body)
-                    .foregroundStyle(Color.App.textSecondary)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.vertical, AppSpacing.xl)
-            } else {
-                ForEach(record.problems) { problem in
-                    ProblemRecordCard(problem: problem)
-                }
+            ProblemRecordListView(problems: record.problems) {
+                isShowingAddProblem = true
             }
         }
     }
