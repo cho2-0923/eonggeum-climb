@@ -56,6 +56,11 @@ struct AddProblemRecordView: View {
                     .disabled(!viewModel.canSave)
                 }
             }
+            .alert("저장 실패", isPresented: $viewModel.isSaveFailedAlertShowing) {
+                Button("확인", role: .cancel) {}
+            } message: {
+                Text("문제 기록을 저장하는 데 실패했어요. 다시 시도해주세요.")
+            }
         }
     }
 }
