@@ -1,4 +1,13 @@
 import Foundation
+import Observation
 
-final class GrowthViewModel: ObservableObject {
+@Observable
+final class GrowthViewModel {
+    var statistics: ClimbingStatistics = .empty
+
+    private let calculator = StatisticsCalculator()
+
+    func update(records: [DailyRecord]) {
+        statistics = calculator.calculate(from: records)
+    }
 }
