@@ -14,6 +14,11 @@ enum ImageStorageService {
         return url
     }
 
+    static func videoDestinationURL(fileExtension: String = "mov", id: UUID = UUID()) throws -> URL {
+        try FileManager.default.createDirectory(at: mediaDirectory, withIntermediateDirectories: true)
+        return mediaDirectory.appendingPathComponent("\(id.uuidString).\(fileExtension)")
+    }
+
     static func delete(at url: URL) {
         try? FileManager.default.removeItem(at: url)
     }

@@ -11,8 +11,11 @@ final class EditProblemRecordViewModel {
     var notes: String
     var isSaveFailedAlertShowing = false
     var isImageLoadFailedAlertShowing = false
-    var selectedItems: [PhotosPickerItem] = []
+    var isVideoLoadFailedAlertShowing = false
+    var selectedPhotoItems: [PhotosPickerItem] = []
     var newImages: [UIImage] = []
+    var selectedVideoItems: [PhotosPickerItem] = []
+    var newVideoURLs: [URL] = []
     private var mediaToDeleteIDs: Set<UUID> = []
 
     private let problem: ProblemRecord
@@ -46,6 +49,18 @@ final class EditProblemRecordViewModel {
         }
     }
 
+    @MainActor
+    func loadVideos(from items: [PhotosPickerItem]) async {
+        newVideoURLs = []
+        for item in items {
+            if let video = try? await item.loadTransferable(type: VideoFile.self) {
+                newVideoURLs.append(video.url)
+            } else {
+                isVideoLoadFailedAlertShowing = true
+            }
+        }
+    }
+
     func markForDeletion(_ media: Media) {
         mediaToDeleteIDs.insert(media.id)
     }
@@ -67,6 +82,11 @@ final class EditProblemRecordViewModel {
                 guard let data = image.jpegData(compressionQuality: 0.8) else { continue }
                 let url = try ImageStorageService.save(data)
                 let media = Media(url: url, type: .photo)
+                context.insert(media)
+                problem.media.append(media)
+            }
+            for url in newVideoURLs {
+                let media = Media(url: url, type: .video)
                 context.insert(media)
                 problem.media.append(media)
             }
