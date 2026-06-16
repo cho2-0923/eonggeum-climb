@@ -12,7 +12,15 @@ import SwiftData
 struct eonggeum_climeApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            TabView {
+                Tab("홈", systemImage: "house.fill") {
+                    HomeView()
+                }
+                Tab("성장 기록", systemImage: "chart.line.uptrend.xyaxis") {
+                    GrowthView()
+                }
+            }
+            .tint(Color.App.primary)
         }
         .modelContainer(for: [
             DailyRecord.self,
