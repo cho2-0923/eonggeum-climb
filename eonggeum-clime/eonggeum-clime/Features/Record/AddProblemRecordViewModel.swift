@@ -11,8 +11,11 @@ final class AddProblemRecordViewModel {
     var notes: String = ""
     var isSaveFailedAlertShowing = false
     var isImageLoadFailedAlertShowing = false
-    var selectedItems: [PhotosPickerItem] = []
+    var isVideoLoadFailedAlertShowing = false
+    var selectedPhotoItems: [PhotosPickerItem] = []
     var selectedImages: [UIImage] = []
+    var selectedVideoItems: [PhotosPickerItem] = []
+    var selectedVideoURLs: [URL] = []
 
     var canSave: Bool {
         !grade.trimmingCharacters(in: .whitespaces).isEmpty
@@ -27,6 +30,18 @@ final class AddProblemRecordViewModel {
                 selectedImages.append(image)
             } else {
                 isImageLoadFailedAlertShowing = true
+            }
+        }
+    }
+
+    @MainActor
+    func loadVideos(from items: [PhotosPickerItem]) async {
+        selectedVideoURLs = []
+        for item in items {
+            if let video = try? await item.loadTransferable(type: VideoFile.self) {
+                selectedVideoURLs.append(video.url)
+            } else {
+                isVideoLoadFailedAlertShowing = true
             }
         }
     }
@@ -47,6 +62,11 @@ final class AddProblemRecordViewModel {
                 guard let data = image.jpegData(compressionQuality: 0.8) else { continue }
                 let url = try ImageStorageService.save(data)
                 let media = Media(url: url, type: .photo)
+                context.insert(media)
+                record.media.append(media)
+            }
+            for url in selectedVideoURLs {
+                let media = Media(url: url, type: .video)
                 context.insert(media)
                 record.media.append(media)
             }

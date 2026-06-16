@@ -43,11 +43,12 @@ struct EditProblemRecordView: View {
                 }
 
                 Section {
-                    let hasPhotos = !viewModel.existingMedia.isEmpty || !viewModel.newImages.isEmpty
+                    let existingPhotos = viewModel.existingMedia.filter { $0.type == .photo }
+                    let hasPhotos = !existingPhotos.isEmpty || !viewModel.newImages.isEmpty
                     if hasPhotos {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: AppSpacing.sm) {
-                                ForEach(viewModel.existingMedia) { media in
+                                ForEach(existingPhotos) { media in
                                     ZStack(alignment: .topTrailing) {
                                         MediaThumbnailView(url: media.url)
                                         Button {
@@ -74,17 +75,61 @@ struct EditProblemRecordView: View {
                     }
 
                     PhotosPicker(
-                        selection: $viewModel.selectedItems,
+                        selection: $viewModel.selectedPhotoItems,
                         maxSelectionCount: 5,
                         matching: .images
                     ) {
                         Label("사진 추가", systemImage: "photo.badge.plus")
                     }
-                    .onChange(of: viewModel.selectedItems) { _, items in
+                    .onChange(of: viewModel.selectedPhotoItems) { _, items in
                         Task { await viewModel.loadImages(from: items) }
                     }
                 } header: {
                     Text("사진 (선택)")
+                        .font(.App.caption)
+                        .foregroundStyle(Color.App.textSecondary)
+                }
+
+                Section {
+                    let existingVideos = viewModel.existingMedia.filter { $0.type == .video }
+                    let hasVideos = !existingVideos.isEmpty || !viewModel.newVideoURLs.isEmpty
+                    if hasVideos {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: AppSpacing.sm) {
+                                ForEach(existingVideos) { media in
+                                    ZStack(alignment: .topTrailing) {
+                                        MediaVideoThumbnailView(url: media.url)
+                                        Button {
+                                            viewModel.markForDeletion(media)
+                                        } label: {
+                                            Image(systemName: "xmark.circle.fill")
+                                                .symbolRenderingMode(.palette)
+                                                .foregroundStyle(.white, Color.App.primary)
+                                                .font(.system(size: 18))
+                                        }
+                                        .offset(x: 6, y: -6)
+                                    }
+                                }
+                                ForEach(viewModel.newVideoURLs, id: \.absoluteString) { url in
+                                    MediaVideoThumbnailView(url: url)
+                                }
+                            }
+                        }
+                        .listRowInsets(EdgeInsets(top: AppSpacing.sm, leading: AppSpacing.md, bottom: AppSpacing.sm, trailing: AppSpacing.md))
+                    }
+
+                    PhotosPicker(
+                        selection: $viewModel.selectedVideoItems,
+                        maxSelectionCount: 3,
+                        matching: .videos
+                    ) {
+                        Label("영상 추가", systemImage: "video.badge.plus")
+                    }
+                    .onChange(of: viewModel.selectedVideoItems) { _, items in
+                        Task { await viewModel.loadVideos(from: items) }
+                    }
+                } header: {
+                    Text("영상 (선택)")
                         .font(.App.caption)
                         .foregroundStyle(Color.App.textSecondary)
                 }
@@ -116,6 +161,11 @@ struct EditProblemRecordView: View {
                 Button("확인", role: .cancel) {}
             } message: {
                 Text("일부 사진을 불러오지 못했어요. 다시 시도해주세요.")
+            }
+            .alert("영상 불러오기 실패", isPresented: $viewModel.isVideoLoadFailedAlertShowing) {
+                Button("확인", role: .cancel) {}
+            } message: {
+                Text("일부 영상을 불러오지 못했어요. 다시 시도해주세요.")
             }
         }
     }

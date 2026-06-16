@@ -39,7 +39,11 @@ struct ProblemRecordCard: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: AppSpacing.xs) {
                         ForEach(problem.media) { media in
-                            MediaThumbnailView(url: media.url)
+                            if media.type == .photo {
+                                MediaThumbnailView(url: media.url)
+                            } else {
+                                MediaVideoThumbnailView(url: media.url)
+                            }
                         }
                     }
                 }
