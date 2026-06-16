@@ -1,4 +1,6 @@
 import Foundation
+import PhotosUI
+import SwiftUI
 import SwiftData
 
 @Observable
@@ -8,8 +10,16 @@ final class EditProblemRecordViewModel {
     var attempts: Int
     var notes: String
     var isSaveFailedAlertShowing = false
+    var isImageLoadFailedAlertShowing = false
+    var selectedItems: [PhotosPickerItem] = []
+    var newImages: [UIImage] = []
+    private var mediaToDeleteIDs: Set<UUID> = []
 
     private let problem: ProblemRecord
+
+    var existingMedia: [Media] {
+        problem.media.filter { !mediaToDeleteIDs.contains($0.id) }
+    }
 
     init(problem: ProblemRecord) {
         self.problem = problem
@@ -23,13 +33,43 @@ final class EditProblemRecordViewModel {
         !grade.trimmingCharacters(in: .whitespaces).isEmpty
     }
 
+    @MainActor
+    func loadImages(from items: [PhotosPickerItem]) async {
+        newImages = []
+        for item in items {
+            if let data = try? await item.loadTransferable(type: Data.self),
+               let image = UIImage(data: data) {
+                newImages.append(image)
+            } else {
+                isImageLoadFailedAlertShowing = true
+            }
+        }
+    }
+
+    func markForDeletion(_ media: Media) {
+        mediaToDeleteIDs.insert(media.id)
+    }
+
     func save(context: ModelContext) -> Bool {
         guard canSave else { return false }
         problem.grade = grade.trimmingCharacters(in: .whitespaces)
         problem.isCompleted = isCompleted
         problem.attempts = attempts
         problem.notes = notes.isEmpty ? nil : notes
+
+        for media in problem.media where mediaToDeleteIDs.contains(media.id) {
+            ImageStorageService.delete(at: media.url)
+            context.delete(media)
+        }
+
         do {
+            for image in newImages {
+                guard let data = image.jpegData(compressionQuality: 0.8) else { continue }
+                let url = try ImageStorageService.save(data)
+                let media = Media(url: url, type: .photo)
+                context.insert(media)
+                problem.media.append(media)
+            }
             try context.save()
             return true
         } catch {
