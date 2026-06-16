@@ -28,3 +28,11 @@ struct WeeklyFrequencyData: Identifiable {
     let label: String        // "6/2~"
     let sessionCount: Int
 }
+
+struct MonthlySuccessRateData: Identifiable {
+    let id = UUID()
+    let sortKey: String      // "2025-01"
+    let label: String        // "1월"
+    let successRate: Double  // 0.0 ~ 1.0
+    let totalAttempts: Int
+}
