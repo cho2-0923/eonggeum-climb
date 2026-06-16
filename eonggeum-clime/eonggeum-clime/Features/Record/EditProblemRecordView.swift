@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import PhotosUI
 
 struct EditProblemRecordView: View {
     @Environment(\.modelContext) private var modelContext
@@ -40,6 +41,53 @@ struct EditProblemRecordView: View {
                         .font(.App.caption)
                         .foregroundStyle(Color.App.textSecondary)
                 }
+
+                Section {
+                    let hasPhotos = !viewModel.existingMedia.isEmpty || !viewModel.newImages.isEmpty
+                    if hasPhotos {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: AppSpacing.sm) {
+                                ForEach(viewModel.existingMedia) { media in
+                                    ZStack(alignment: .topTrailing) {
+                                        MediaThumbnailView(url: media.url)
+                                        Button {
+                                            viewModel.markForDeletion(media)
+                                        } label: {
+                                            Image(systemName: "xmark.circle.fill")
+                                                .symbolRenderingMode(.palette)
+                                                .foregroundStyle(.white, Color.App.primary)
+                                                .font(.system(size: 18))
+                                        }
+                                        .offset(x: 6, y: -6)
+                                    }
+                                }
+                                ForEach(Array(viewModel.newImages.enumerated()), id: \.offset) { _, image in
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 64, height: 64)
+                                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                                }
+                            }
+                        }
+                        .listRowInsets(EdgeInsets(top: AppSpacing.sm, leading: AppSpacing.md, bottom: AppSpacing.sm, trailing: AppSpacing.md))
+                    }
+
+                    PhotosPicker(
+                        selection: $viewModel.selectedItems,
+                        maxSelectionCount: 5,
+                        matching: .images
+                    ) {
+                        Label("사진 추가", systemImage: "photo.badge.plus")
+                    }
+                    .onChange(of: viewModel.selectedItems) { _, items in
+                        Task { await viewModel.loadImages(from: items) }
+                    }
+                } header: {
+                    Text("사진 (선택)")
+                        .font(.App.caption)
+                        .foregroundStyle(Color.App.textSecondary)
+                }
             }
             .navigationTitle("문제 수정")
             .navigationBarTitleDisplayMode(.inline)
@@ -63,6 +111,11 @@ struct EditProblemRecordView: View {
                 Button("확인", role: .cancel) {}
             } message: {
                 Text("문제 기록을 저장하는 데 실패했어요. 다시 시도해주세요.")
+            }
+            .alert("사진 불러오기 실패", isPresented: $viewModel.isImageLoadFailedAlertShowing) {
+                Button("확인", role: .cancel) {}
+            } message: {
+                Text("일부 사진을 불러오지 못했어요. 다시 시도해주세요.")
             }
         }
     }
