@@ -40,11 +40,45 @@ struct GrowthView: View {
     private var statisticsScrollView: some View {
         ScrollView {
             VStack(spacing: AppSpacing.lg) {
+                growthTrendSection
                 monthlyRecordSection
                 weeklyFrequencySection
                 gradeSuccessSection
             }
             .padding(AppSpacing.md)
+        }
+    }
+
+    private var growthTrendSection: some View {
+        StatCard(title: "성장 추이") {
+            if viewModel.statistics.monthlySuccessRates.isEmpty {
+                emptyDataView
+            } else {
+                Chart(viewModel.statistics.monthlySuccessRates) { item in
+                    LineMark(
+                        x: .value("월", item.label),
+                        y: .value("성공률", item.successRate * 100)
+                    )
+                    .foregroundStyle(Color.App.primary)
+                    .interpolationMethod(.catmullRom)
+                    PointMark(
+                        x: .value("월", item.label),
+                        y: .value("성공률", item.successRate * 100)
+                    )
+                    .foregroundStyle(Color.App.primary)
+                    .symbolSize(36)
+                }
+                .chartYScale(domain: 0...100)
+                .chartYAxis {
+                    AxisMarks(values: [0, 25, 50, 75, 100]) { value in
+                        AxisGridLine()
+                        AxisValueLabel {
+                            if let v = value.as(Int.self) { Text("\(v)%") }
+                        }
+                    }
+                }
+                .frame(height: 180)
+            }
         }
     }
 
